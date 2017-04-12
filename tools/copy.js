@@ -1,12 +1,11 @@
 import path from 'path'
+import Promise from 'bluebird'
 import * as fs from './lib/fs'
 import watch from './lib/watch'
-import Promise from 'bluebird'
 import pkg from '../package.json'
 
 async function copy({ watching } = {}) {
   const ncp = Promise.promisify(require('ncp'))
-
   await fs.makeDir('build/node_modules/iuffy-model')
 
   const env = !process.argv.includes('release') ? 'development' : 'production'
@@ -17,7 +16,7 @@ async function copy({ watching } = {}) {
     ncp('node_modules/iuffy-model/dist', 'build/node_modules/iuffy-model/dist'),
     ncp(
       'node_modules/iuffy-model/package.json',
-      'build/node_modules/iuffy-model/package.json'
+      'build/node_modules/iuffy-model/package.json',
     ),
   ]
 
