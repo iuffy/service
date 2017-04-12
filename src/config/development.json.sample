@@ -1,0 +1,57 @@
+{
+  "name": "iuffy service",
+  "server": {
+    "port": 10001
+  },
+  "thirdParty": {
+    "aliDayu": {
+      "appKey": "****",
+      "appSecret": "***"
+    },
+    "smtp": {
+      "connectionString": "",
+      "from": ""
+    },
+    "forecast": {
+      "key": ""
+    },
+    "amap": {
+      "key": ""
+    }
+  },
+  "database": {
+    "postgres": {
+      "iuffy": {
+        "host": "localhost",
+        "db": "iuffy",
+        "port": 5432,
+        "credentials": {
+          "username": "postgres"
+        }
+      }
+    }
+  },
+  "jwtOptions": {
+    "expiresIn": "180d"
+  },
+  "secret": {
+    "jwt": "",
+    "cookie": "",
+    "hash": ""
+  },
+  "pay": {
+    "wechat": {
+      "appid": "",
+      "appsecret": "",
+      "partnerid": "",
+      "signkey": "",
+      "redirect": ""
+    },
+    "ali": {
+      "partnerid": "",
+      "appid": "",
+      "sellerid": "",
+      "redirect":  ""
+    }
+  }
+}
