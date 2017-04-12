@@ -39,7 +39,7 @@ export function bind(route, exempt) {
 
   const getUser = async (req, res, next) => {
     try {
-      const { id } = req.params
+      const { id } = req.user
       const user = await new User({ id }).fill()
       res.json(user)
     } catch (err) {
@@ -49,8 +49,9 @@ export function bind(route, exempt) {
 
   const updateUser = async (req, res, next) => {
     try {
-      const { id } = req.params
-      const user = await new User({ id }).update()
+      const { id } = req.user
+      req.body.id = id
+      const user = await new User(req.body).update()
       res.json(user)
     } catch (err) {
       next(err)
@@ -60,9 +61,9 @@ export function bind(route, exempt) {
   exempt('/signup')
   exempt('/login')
 
-  route.post('/signup', signup) // 注册
-  route.post('/login', login) // 登录
-  route.post('/changepassword', changePassword) // 修改密码
-  route.get('/user/:id', getUser)
-  route.put('/user/:id', updateUser)
+  route.post('/signup', signup)
+  route.post('/login', login)
+  route.post('/changepassword', changePassword)
+  route.get('/user', getUser)
+  route.put('/user', updateUser)
 }

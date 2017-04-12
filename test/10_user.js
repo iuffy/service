@@ -79,6 +79,8 @@ describe('User', () => {
         should.not.exist(err)
         res.body.should.have.property('id')
         res.body.should.have.property('email')
+        res.body.should.have.property('token')
+        env.user.token = res.body.token
         done()
       })
   })
@@ -97,6 +99,42 @@ describe('User', () => {
         should.not.exist(err)
         res.body.should.have.property('error')
         res.body.error.should.have.property('code').and.equal('InvalidIdentification')
+        done()
+      })
+  })
+
+  it('update user avatar and nickname', (done) => {
+    client()
+      .put('/api/v0/user')
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .set('X-Auth-Key', env.user.token)
+      .send({
+        avatar: 'user avatar',
+        nickname: 'test user',
+      })
+      .expect(200)
+      .end((err, res) => {
+        should.not.exist(err)
+        res.body.should.have.property('id')
+        res.body.should.have.property('email')
+        done()
+      })
+  })
+
+  it('get user', (done) => {
+    client()
+      .get('/api/v0/user')
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .set('X-Auth-Key', env.user.token)
+      .expect(200)
+      .end((err, res) => {
+        should.not.exist(err)
+        res.body.should.have.property('id')
+        res.body.should.have.property('email')
+        res.body.should.have.property('avatar')
+        res.body.should.have.property('nickname')
         done()
       })
   })
