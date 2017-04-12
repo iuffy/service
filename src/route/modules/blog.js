@@ -3,8 +3,11 @@ export function bind(route) {
 
   const createBlog = async (req, res, next) => {
     try {
-      const blog = new Blog(req.body).create()
-      return res.json(blog)
+      req.body.user = {
+        id: req.user.id,
+      }
+      const blog = await new Blog(req.body).create()
+      return res.status(201).send(blog)
     } catch (err) {
       return next(err)
     }
@@ -13,7 +16,7 @@ export function bind(route) {
   const getBlogs = async (req, res, next) => {
     try {
       const { page, pagesize } = req.query
-      const blogs = Blog.getBlogs(req.user.id, page, pagesize)
+      const blogs = await Blog.getBlogs(req.user.id, page, pagesize)
       return res.json(blogs)
     } catch (err) {
       return next(err)
@@ -23,7 +26,7 @@ export function bind(route) {
   const getBlog = async (req, res, next) => {
     try {
       const { id } = req.params
-      const blog = new Blog({ id }).fill()
+      const blog = await new Blog({ id }).fill()
       return res.json(blog)
     } catch (err) {
       return next(err)
@@ -32,7 +35,10 @@ export function bind(route) {
 
   const updateBlog = async (req, res, next) => {
     try {
-      const blog = new Blog(req.body).update()
+      req.body.user = {
+        id: req.user.id,
+      }
+      const blog = await new Blog(req.body).update()
       return res.json(blog)
     } catch (err) {
       return next(err)
@@ -42,8 +48,11 @@ export function bind(route) {
   const deleteBlog = async (req, res, next) => {
     try {
       const { id } = req.params
-      const blog = new Blog({ id }).delete()
-      return res.json(blog)
+      await new Blog({
+        id,
+        user: { id: req.user.id },
+      }).delete()
+      return res.status(204).send()
     } catch (err) {
       return next(err)
     }
