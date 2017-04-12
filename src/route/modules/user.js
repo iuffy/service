@@ -8,7 +8,7 @@ export function bind(route, exempt) {
     try {
       const user = await new User({ email }).create(password)
       user.token = generateToken(user.id)
-      return res.json(user)
+      return res.status(201).send(user)
     } catch (err) {
       return next(err)
     }

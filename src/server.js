@@ -57,24 +57,26 @@ async function server() {
   apiRouter.use(cookieParser(config.secret.cookie))
   apiRouter.use(bodyParser.json())
   apiRouter.use(authorization(config))
-  // // error handling
-  // apiRouter.use((err, req, res) => {
-  //   const error = {}
-  //   let statusCode = 500
-  //   if (typeof err === 'string') {
-  //     const e = new errors.InternalError()
-  //     error.code = e.name
-  //     error.message = `${errors.lang(e)} (${err})` || e.name
-  //   } else {
-  //     error.code = err.code
-  //     error.message = err.message
-  //     statusCode = err.statusCode || statusCode
-  //   }
-
-  //   res.status(statusCode).send({ error })
-  // })
 
   route.bind(apiRouter)
+
+  // error handling
+  apiRouter.use((err, req, res, next) => {
+    const error = {}
+    let statusCode = 500
+    if (typeof err === 'string') {
+      const e = new errors.InternalError()
+      error.code = e.name
+      error.message = `${errors.lang(e)} (${err})` || e.name
+    } else {
+      error.code = err.code
+      error.message = err.message
+      statusCode = err.statusCode || statusCode
+    }
+
+    res.status(statusCode).send({ error })
+  })
+
   app.use('/api/v0/', apiRouter)
 
   if (__TEST__) return app

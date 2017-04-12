@@ -21,11 +21,6 @@ errors.register({
   AvatarInvalid: 400,
   AuthTypeInvalid: 400,
   PasswordRequired: 400,
-  InvalidCoordinate: 400,
-  CommentRequired: 400,
-  CityParamsRequired: 400,
-  FeeRequestRequired: 400,
-  SplitPaymentRequired: 400,
 })
 
 export default errors

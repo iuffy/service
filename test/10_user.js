@@ -12,6 +12,7 @@ describe('User', () => {
         email: 'test@iuffy.com',
         password: '123456',
       })
+      .expect(201)
       .end((err, res) => {
         should.not.exist(err)
         res.body.should.have.property('id')
@@ -34,6 +35,7 @@ describe('User', () => {
         email: 'test@iuffy.com',
         password: '123456',
       })
+      .expect(200)
       .end((err, res) => {
         should.not.exist(err)
         res.body.should.have.property('id')
@@ -54,6 +56,7 @@ describe('User', () => {
         password: '654321',
         oldPassword: '123456',
       })
+      .expect(200)
       .end((err, res) => {
         should.not.exist(err)
         res.body.should.have.property('id')
@@ -71,10 +74,29 @@ describe('User', () => {
         email: 'test@iuffy.com',
         password: '654321',
       })
+      .expect(200)
       .end((err, res) => {
         should.not.exist(err)
         res.body.should.have.property('id')
         res.body.should.have.property('email')
+        done()
+      })
+  })
+
+  it('login by wrong password', (done) => {
+    client()
+      .post('/api/v0/login')
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .send({
+        email: 'test@iuffy.com',
+        password: '6543211',
+      })
+      .expect(401)
+      .end((err, res) => {
+        should.not.exist(err)
+        res.body.should.have.property('error')
+        res.body.error.should.have.property('code').and.equal('InvalidIdentification')
         done()
       })
   })
