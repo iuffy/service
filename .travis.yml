@@ -5,3 +5,5 @@ services:
   - postgresql
 addons:
   postgresql: "9.4"
+before_script:
+  - cp src/config/test.json.sample src/config/test.json
