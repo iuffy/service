@@ -58,12 +58,22 @@ export function bind(route, exempt) {
     }
   }
 
+  const test = async (req, res, next) => {
+    try {
+      res.json({ Hello: 'world' })
+    } catch (err) {
+      next(err)
+    }
+  }
+
   exempt('/signup')
   exempt('/login')
+  exempt('/test')
 
   route.post('/signup', signup)
   route.post('/login', login)
   route.post('/changepassword', changePassword)
   route.get('/user', getUser)
   route.put('/user', updateUser)
+  route.get('/test', test)
 }
