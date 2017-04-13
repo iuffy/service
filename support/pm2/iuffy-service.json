@@ -8,7 +8,7 @@
       "instances"           : 1,
       "exec_mode"           : "cluster_mode",
       "env"                 : {
-        "NODE_ENV"          : "production"
+        "NODE_ENV"          : "development"
       },
       "error_file"          : "log/iuffy-service.stderr.log",
       "out_file"            : "log/iuffy-service.stdout.log",
