@@ -5,7 +5,7 @@ global.env = {}
 describe('User', () => {
   it('register', (done) => {
     client()
-      .post('/api/v0/signup')
+      .post('/v0/signup')
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .send({
@@ -28,7 +28,7 @@ describe('User', () => {
 
   it('login', (done) => {
     client()
-      .post('/api/v0/login')
+      .post('/v0/login')
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .send({
@@ -48,7 +48,7 @@ describe('User', () => {
 
   it('change password', (done) => {
     client()
-      .post('/api/v0/changepassword')
+      .post('/v0/changepassword')
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .set('X-Auth-Key', env.user.token)
@@ -67,7 +67,7 @@ describe('User', () => {
 
   it('login by new password', (done) => {
     client()
-      .post('/api/v0/login')
+      .post('/v0/login')
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .send({
@@ -87,7 +87,7 @@ describe('User', () => {
 
   it('login by wrong password', (done) => {
     client()
-      .post('/api/v0/login')
+      .post('/v0/login')
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .send({
@@ -105,7 +105,7 @@ describe('User', () => {
 
   it('update user avatar and nickname', (done) => {
     client()
-      .put('/api/v0/user')
+      .put('/v0/user')
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .set('X-Auth-Key', env.user.token)
@@ -124,7 +124,7 @@ describe('User', () => {
 
   it('get user', (done) => {
     client()
-      .get('/api/v0/user')
+      .get('/v0/user')
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .set('X-Auth-Key', env.user.token)

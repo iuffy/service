@@ -77,7 +77,7 @@ async function server() {
     res.status(statusCode).send({ error })
   })
 
-  app.use('/api/v0/', apiRouter)
+  app.use('/v0/', apiRouter)
 
   if (__TEST__) return app
 

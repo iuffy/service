@@ -3,7 +3,7 @@ import client from './lib/client'
 describe('Blog', () => {
   it('Add blog', (done) => {
     client()
-      .post('/api/v0/blogs')
+      .post('/v0/blogs')
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .set('X-Auth-Key', env.user.token)
@@ -24,7 +24,7 @@ describe('Blog', () => {
 
   it('Update blog', (done) => {
     client()
-      .put(`/api/v0/blog/${env.blog.id}`)
+      .put(`/v0/blog/${env.blog.id}`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .set('X-Auth-Key', env.user.token)
@@ -45,7 +45,7 @@ describe('Blog', () => {
 
   it('Get blog', (done) => {
     client()
-      .get(`/api/v0/blog/${env.blog.id}`)
+      .get(`/v0/blog/${env.blog.id}`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .set('X-Auth-Key', env.user.token)
@@ -62,7 +62,7 @@ describe('Blog', () => {
 
   it('Get blogs list', (done) => {
     client()
-      .get('/api/v0/blogs')
+      .get('/v0/blogs')
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .set('X-Auth-Key', env.user.token)
@@ -80,7 +80,7 @@ describe('Blog', () => {
 
   it('Remove blog', (done) => {
     client()
-      .del(`/api/v0/blog/${env.blog.id}`)
+      .del(`/v0/blog/${env.blog.id}`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .set('X-Auth-Key', env.user.token)
@@ -93,7 +93,7 @@ describe('Blog', () => {
 
   it('Get blogs list', (done) => {
     client()
-      .get('/api/v0/blogs')
+      .get('/v0/blogs')
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .set('X-Auth-Key', env.user.token)
