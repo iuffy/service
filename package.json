@@ -16,7 +16,7 @@
     "cookie-parser": "^1.4.1",
     "core-js": "2.4.1",
     "date-utils": "1.2.21",
-    "iuffy-model": "git+ssh://git@github.com/iuffy/model.git#3e83a05",
+    "iuffy-model": "git+ssh://git@github.com/iuffy/model.git#f988e1869a5006e9ac1ef2e64bcefb1278eb4861",
     "express": "4.14.0",
     "hashids": "^1.1.1",
     "helmet": "^3.5.0",
