@@ -44,9 +44,9 @@
     "expiresIn": "180d"
   },
   "secret": {
-    "jwt": "",
-    "cookie": "",
-    "hash": ""
+    "jwt": "jwtsecret",
+    "cookie": "1dy-7C6-a4H-eEa",
+    "hash": "Fc5-vhT-zG5-7vh"
   },
   "pay": {
     "wechat": {
