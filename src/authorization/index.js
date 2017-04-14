@@ -4,8 +4,8 @@ import * as exemptions from './exemptions'
 
 function authorize(req) {
   if (!exemptions.has(req.url)) {
-    const { id, token } = req.user
-    if (!id || !token) {
+    const user = req.user
+    if (!user || !user.id || !user.token) {
       return new errors.UnauthorizedError()
     }
   }

@@ -98,7 +98,7 @@ describe('User', () => {
       .end((err, res) => {
         should.not.exist(err)
         res.body.should.have.property('error')
-        res.body.error.should.have.property('code').and.equal('InvalidIdentification')
+        res.body.error.should.have.property('code').and.equal('InvalidIdentificationError')
         done()
       })
   })
@@ -135,6 +135,20 @@ describe('User', () => {
         res.body.should.have.property('email')
         res.body.should.have.property('avatar')
         res.body.should.have.property('nickname')
+        done()
+      })
+  })
+
+  it('get by unauth user', (done) => {
+    client()
+      .get('/v0/user')
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .expect(401)
+      .end((err, res) => {
+        should.not.exist(err)
+        res.body.should.have.property('error')
+        res.body.error.should.have.property('code').and.equal('UnauthorizedError')
         done()
       })
   })

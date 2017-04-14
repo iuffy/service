@@ -62,12 +62,19 @@ async function server() {
 
   // error handling
   apiRouter.use((err, req, res, next) => {
-    const error = {}
+    let error = {}
     let statusCode = 500
     if (typeof err === 'string') {
       const e = new errors.InternalError()
       error.code = e.name
       error.message = `${errors.lang(e)} (${err})` || e.name
+    } else if (err.failedValidation) {
+      statusCode = 400
+      error = err
+    } else if (err.name) {
+      error.code = err.name
+      error.message = errors.lang(err) || err.name
+      statusCode = err.statusCode || statusCode
     } else {
       error.code = err.code
       error.message = err.message
