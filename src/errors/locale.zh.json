@@ -1,15 +1,6 @@
 {
-  "UsernameInvalid": "请提供有效的用户名",
-  "MobileNumberInvalid": "请提供有效的手机号码",
-  "RegionNotSupported": "国家或地区尚未支持",
-  "FailToSendSms": "发送验证码失败，请稍后再试",
-  "EmailInvalid": "请提供有效的邮箱地址",
-  "NotAuthorize": "您没有权限执行此操作",
-  "AvatarInvalid": "头像不合法",
-  "Internal": "服务器内部错误",
-  "ResourceTypeNotSupported": "非法的资源类型",
-  "ApiAuthKeyIsMissing": "API凭据不能为空",
-  "InvalidAuthKey": "未提供有效认证信息",
-  "AuthTypeInvalid": "未知的身份验证方式",
-  "PasswordRequired": "请提供账号密码"
+  "Unauthorized": "身份验证失败，请重新登录",
+  "InvalidEmail": "请提供有效的邮箱地址",
+  "InvalidMobile": "请提供有效的手机号码",
+  "RegionNotSupported": "国家或地区尚未支持"
 }

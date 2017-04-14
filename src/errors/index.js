@@ -9,18 +9,9 @@ errors.localization = Object.keys(localization).reduce((previousLocalization, ke
 
 errors.register({
   NotAuthorize: 401,
-  EventStatusShouldUpdateSeparately: 400,
-  UsernameInvalid: 400,
-  MobileNumberInvalid: 400,
-  EmailInvalid: 400,
-  FailToSendSms: 500,
+  InvalidEmail: 400,
+  InvalidMobile: 400,
   RegionNotSupported: 400,
-  UnifiedOrderFailed: 400,
-  NotifyFailed: 400,
-  ResourceTypeNotSupported: 400,
-  AvatarInvalid: 400,
-  AuthTypeInvalid: 400,
-  PasswordRequired: 400,
 })
 
 export default errors
