@@ -31,7 +31,7 @@ async function deploy() {
     excludes.push('iuffy-service.json')
   }
 
-  const target = PROD ? 'iuffy-deploy' : 'iuffy'
+  const target = PROD ? 'aws-deploy' : 'aws'
 
   const cmd = [
     'rsync -avz --delete',
